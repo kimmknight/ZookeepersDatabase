@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulated Terminal Application</title>
+    <style>
+        body {
+            font-family: monospace;
+            background-color: black;
+            color: green;
+            margin: 0;
+            padding: 10px;
+        }
+        #terminal {
+            max-width: 80em;
+            height: 30em;
+            overflow-y: scroll;
+            border: 1px solid green;
+            padding: 10px;
+        }
+        #user-input {
+            width: calc(80em - 22px);
+            background: black;
+            color: green;
+            border: none;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="terminal"></div>
+    <input type="text" id="user-input" placeholder="Type your input here...">
+    
+    <script>
+        // Initialize the list of animals
+        let animals = ["Tiger", "Rhino", "Elephant"];
+        animals.sort();
+
+        // Function to print all animals
+        function printAllAnimals() {
+            let output = "";
+            for (let i = 0; i < animals.length; i++) {
+                output += `${i + 1} ${animals[i]}<br>`;
+            }
+            return output;
+        }
+
+        // Function to show the menu
+        function showMenu() {
+            const menuText = `
+                <br>Zookeeper's Database<br>
+                **********************<br>
+                1: Print Animals List<br>
+                2: Add Animal<br>
+                3: Delete Animal<br>
+                4: Exit<br>
+                **********************<br>
+            `;
+            appendToTerminal(menuText);
+        }
+
+        // Function to append text to the terminal
+        function appendToTerminal(text) {
+            const terminal = document.getElementById("terminal");
+            terminal.innerHTML += text;
+            terminal.scrollTop = terminal.scrollHeight;  // Scroll to bottom
+        }
+
+        // Function to clear the input field
+        function clearInput() {
+            const inputField = document.getElementById("user-input");
+            inputField.value = "";
+        }
+
+        // Function to handle user input
+        function handleInput(event) {
+            if (event.key === "Enter") {
+                const userInput = document.getElementById("user-input").value;
+                // appendToTerminal(userInput + "<br>");
+                appendToTerminal("<br>");
+                clearInput();
+                
+                switch (state.current) {
+                    case "menu":
+                        handleMenuSelection(userInput);
+                        break;
+                    case "add_animal":
+                        handleAddAnimal(userInput);
+                        break;
+                    case "delete_animal":
+                        handleDeleteAnimal(userInput);
+                        break;
+                }
+            }
+        }
+
+        // Function to handle menu selection
+        function handleMenuSelection(selection) {
+            switch (selection) {
+                case "1":
+                    appendToTerminal(printAllAnimals());
+                    showMenu();
+                    break;
+                case "2":
+                    appendToTerminal("Enter new animal: <br>");
+                    state.current = "add_animal";
+                    break;
+                case "3":
+                    appendToTerminal(printAllAnimals() + "Animal number to delete: <br>");
+                    state.current = "delete_animal";
+                    break;
+                case "4":
+                    appendToTerminal("Exiting. The program would normally finish here, but because this is a sample, it will start again...<br>");
+                    animals = ["Tiger", "Rhino", "Elephant"]
+                    showMenu();
+                    break;
+                default:
+                    appendToTerminal("Invalid selection. Please try again.<br>");
+                    showMenu();
+                    break;
+            }
+        }
+
+        // Function to handle adding a new animal
+        function handleAddAnimal(animalName) {
+            animals.push(animalName);
+            animals.sort();
+            appendToTerminal(`${animalName} added.<br>`);
+            state.current = "menu";
+            showMenu();
+        }
+
+        // Function to handle deleting an animal
+        function handleDeleteAnimal(animalNumberStr) {
+            const animalNumber = parseInt(animalNumberStr) - 1;
+            if (!isNaN(animalNumber) && animalNumber >= 0 && animalNumber < animals.length) {
+                const deletedAnimal = animals.splice(animalNumber, 1);
+                appendToTerminal(`${deletedAnimal} deleted.<br>`);
+            } else {
+                appendToTerminal("Invalid number. Please try again.<br>");
+            }
+            state.current = "menu";
+            showMenu();
+        }
+
+        // Initialize state
+        const state = { current: "menu" };
+
+        // Display the initial menu
+        showMenu();
+
+        // Attach event listener to input field
+        document.getElementById("user-input").addEventListener("keydown", handleInput);
+    </script>
+</body>
+</html>
