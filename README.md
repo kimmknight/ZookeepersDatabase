@@ -22,6 +22,8 @@ Having a little knowledge and experience with Python will help a lot. Two great 
 
 ## Application Requirements
 
+Before building any application, it's important to understand the requirements, what the application is trying to achieve, and what it will look (and feel) like to the user.
+
 Our application will be used by an imaginary zoo. They need a way to keep track of what animals they have.
 
 The users of the application need to be able to:
@@ -33,14 +35,10 @@ The users of the application need to be able to:
 
 The application should also:
 
-- Save the list to a file when the application exits
-- Load the list from a file when the application starts
+- Save the animal list to a file when the application exits
+- Load the animal list from a file when the application starts
 
 This will be a text-based application controlled by keyboard input.
-
-# Planning
-
-Before building any application, it's important to understand the requirements, what the application is trying to achieve, and what it will look (and feel) like to the user.
 
 To help you understand what the finished product should look like and how it should work, you can test the [web-based preview](sample/jsanimals.html) and try it for yourself.
 
