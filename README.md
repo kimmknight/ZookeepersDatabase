@@ -42,7 +42,7 @@ This will be a text-based application controlled by keyboard input.
 
 Before building any application, it's important to understand the requirements, what the application is trying to achieve, and what it will look (and feel) like to the user.
 
-To help you understand what the finished product will look like and how it will work, it is handy to look at the finished product. You can test the [web-based prototype](sample/jsanimals.html) and try it for yourself.
+To help you understand what the finished product should look like and how it should work, you can test the [web-based preview](sample/jsanimals.html) and try it for yourself.
 
 # Steps
 
