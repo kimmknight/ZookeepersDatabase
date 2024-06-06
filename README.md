@@ -15,7 +15,12 @@ You should:
 - Know how to open an existing Python file
 - Know how to run a Python file
 
-## The Requirements
+Having a little knowledge and experience with Python will help a lot. Two great free resources for learning Python basics are:
+
+- [Learn Python 3 | Codecademy](https://www.codecademy.com/courses/learn-python-3/)
+- [W3Schools Python Tutorial](https://www.w3schools.com/python/)
+
+## Application Requirements
 
 Our application will be used by an imaginary zoo. They need a way to keep track of what animals they have.
 
