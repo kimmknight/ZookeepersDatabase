@@ -40,7 +40,7 @@ The application should also:
 
 This will be a text-based application controlled by keyboard input.
 
-To help you understand what the finished product should look like and how it should work, you can test the [web-based preview](sample/jsanimals.html) and try it for yourself.
+To help you understand what the finished product should look like and how it should work, you can test the [web-based preview](sample/jsanimals.html) ([live link](https://kimmknight.github.io/ZookeepersDatabase/sample/jsanimals.html)) and try it for yourself.
 
 # Steps
 
